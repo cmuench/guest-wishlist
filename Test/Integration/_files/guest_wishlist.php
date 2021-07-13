@@ -10,6 +10,7 @@ $wishlist = $objectManager->create(\Magento\Wishlist\Model\Wishlist::class);
 
 $wishlist->setCustomerId(0);
 $wishlist->setSharingCode('guest_wishlist');
+$wishlist->setShared(1);
 $wishlist->save();
 
 $item = $wishlist->addNewItem($product, new \Magento\Framework\DataObject([]));
