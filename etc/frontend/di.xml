@@ -7,4 +7,9 @@
     <type name="Magento\Wishlist\Model\Wishlist">
         <plugin name="mark_guest_as_wishlist_owner" type="MageSuite\GuestWishlist\Plugin\Wishlist\Model\Wishlist\MarkGuestAsWishlistOwner" sortOrder="10"/>
     </type>
+
+    <type name="Magento\Wishlist\Controller\Index\Index">
+        <plugin sortOrder="10" name="add_layout_handler_for_guest_wishlist"
+                type="MageSuite\GuestWishlist\Plugin\Wishlist\Controller\Index\Index\AddLayoutHandlerForGuestWishlist"/>
+    </type>
 </config>
