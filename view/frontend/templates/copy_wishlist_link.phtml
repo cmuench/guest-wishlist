@@ -2,10 +2,36 @@
 /** @var \MageSuite\GuestWishlist\Model\ViewModel\CopyWishlistLink $viewModel */
 $viewModel = $block->getViewModel();
 $guestWishlist = $viewModel->getGuestWishlist();
+$copyLink = $viewModel->getCopyLink();
 ?>
 <div class="cs-dashboard__wishlist-guest">
     <span class="cs-dashboard__wishlist-guest-label"><?=__('To recreate this wishlist in other browsers please use following link')?>:</span>
     <code class="cs-dashboard__wishlist-guest-code">
-        <?=$viewModel->getCopyLink()?>
+        <?=$copyLink?>
     </code>
+    <a href="#" title="<?= __('Copy to clipboard'); ?>" role="button" aria-label="<?= __('Copy to clipboard'); ?>" class="cs-dashboard__wishlist-guest-copy">
+        <?= $this->getLayout()
+                    ->createBlock('MageSuite\ThemeHelpers\Block\Icon')
+                    ->setIconUrl('images/icons/copy.svg')
+                    ->setCssClass('cs-dashboard__wishlist-guest-copy-icon')
+                    ->setAltText(__('Copy to clipboard'))
+                    ->setInlined(true)
+                    ->setLazyLoaded(true)
+                    ->toHtml();
+        ?>
+        <span class="cs-visually-hidden"><?= __('Copy to clipboard'); ?></span>
+        <input type="text" class="cs-visually-hidden copytoclipboard"  aria-label="<?= __('Copy to clipboard'); ?>" value="<?=$copyLink?>">
+    </a>
 </div>
+
+<script>
+    require(["jquery"], function ($) {
+        $(document).on('click', '.cs-dashboard__wishlist-guest-copy', function(e) {
+            e.preventDefault();
+            var copyInput = $('.copytoclipboard')[0];
+            copyInput.select();
+            document.execCommand('copy');
+            copyInput.blur();
+        });
+    });
+</script>
