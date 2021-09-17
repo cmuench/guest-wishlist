@@ -4,6 +4,7 @@
         <guest_wishlist>
             <general>
                 <cookie_lifetime>525600</cookie_lifetime>
+                <show_account_links_for_guest>1</show_account_links_for_guest>
             </general>
         </guest_wishlist>
     </default>

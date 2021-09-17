@@ -5,6 +5,7 @@ namespace MageSuite\GuestWishlist\Helper;
 class Configuration
 {
     const GUEST_WISHLIST_COOKIE_LIFETIME_XML_PATH = 'guest_wishlist/general/cookie_lifetime';
+    const GUEST_WISHLIST_SHOW_ACCOUNT_LINKS_FOR_GUEST_XML_PATH = 'guest_wishlist/general/show_account_links_for_guest';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
@@ -19,6 +20,11 @@ class Configuration
     public function getGuestWishlistCookieLifetime()
     {
         return $this->scopeConfig->getValue(self::GUEST_WISHLIST_COOKIE_LIFETIME_XML_PATH);
+    }
+
+    public function isShowAccountLinksForGuest()
+    {
+        return $this->scopeConfig->getValue(self::GUEST_WISHLIST_SHOW_ACCOUNT_LINKS_FOR_GUEST_XML_PATH);
     }
 
     public function getUseQtyInWishlist() {

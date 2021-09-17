@@ -13,12 +13,20 @@ class AddLayoutHandlerForGuestWishlist
     protected $countItemsForGuestWishlistHelper;
 
     /**
+     * @var \MageSuite\GuestWishlist\Helper\Configuration
+     */
+    protected $configuration;
+
+    /**
      * @param \MageSuite\GuestWishlist\Plugin\Wishlist\Helper\Data\CountItemsForGuestWishlist $countItemsForGuestWishlistHelper
+     * @param \MageSuite\GuestWishlist\Helper\Configuration $configuration
      */
     public function __construct(
-        \MageSuite\GuestWishlist\Plugin\Wishlist\Helper\Data\CountItemsForGuestWishlist $countItemsForGuestWishlistHelper
+        \MageSuite\GuestWishlist\Plugin\Wishlist\Helper\Data\CountItemsForGuestWishlist $countItemsForGuestWishlistHelper,
+        \MageSuite\GuestWishlist\Helper\Configuration $configuration
     ) {
         $this->countItemsForGuestWishlistHelper = $countItemsForGuestWishlistHelper;
+        $this->configuration = $configuration;
     }
 
     public function afterExecute(
@@ -29,6 +37,9 @@ class AddLayoutHandlerForGuestWishlist
             return $result;
         }
 
+        if (!$this->configuration->isShowAccountLinksForGuest()) {
+            return $result;
+        }
         $result->getLayout()->getUpdate()->addHandle(self::LAYOUT_HANDLER_NAME);
 
         return $result;
