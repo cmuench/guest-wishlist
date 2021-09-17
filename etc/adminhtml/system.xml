@@ -13,6 +13,10 @@
                 <field id="cookie_lifetime" translate="label" type="text" sortOrder="10" showInDefault="1">
                     <label>Guest wishlist cookie lifetime (minutes)</label>
                 </field>
+                <field id="show_account_links_for_guest" translate="label" type="select" sortOrder="20" showInDefault="1">
+                    <label>Show account links for guest wishlist</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
             </group>
         </section>
     </system>
