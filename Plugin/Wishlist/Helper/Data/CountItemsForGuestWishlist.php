@@ -3,8 +3,8 @@
 namespace MageSuite\GuestWishlist\Plugin\Wishlist\Helper\Data;
 
 /**
- * Default logic for counting wishlist items to display them in badge uses customer session
- * This plugin provides logic that counts wishlist items when customer is not logged in
+ * Default logic for counting wishlist items to display them in badge uses customer session.
+ * This plugin provides logic that counts wishlist items when customer is not logged in.
  */
 class CountItemsForGuestWishlist
 {
