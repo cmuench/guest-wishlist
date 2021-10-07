@@ -37,7 +37,7 @@ class AddLayoutHandlerForGuestWishlist
             return $result;
         }
 
-        if (!$this->configuration->isShowAccountLinksForGuest()) {
+        if ($this->configuration->isShowAccountLinksForGuest()) {
             return $result;
         }
         $result->getLayout()->getUpdate()->addHandle(self::LAYOUT_HANDLER_NAME);
