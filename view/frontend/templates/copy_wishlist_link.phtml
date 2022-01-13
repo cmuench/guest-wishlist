@@ -1,26 +1,28 @@
 <?php
 /** @var \MageSuite\GuestWishlist\Model\ViewModel\CopyWishlistLink $viewModel */
+/** @var \MageSuite\GuestWishlist\Block\Customer\Wishlist\Guest\CopyWishlistLink $block */
 $viewModel = $block->getViewModel();
 $guestWishlist = $viewModel->getGuestWishlist();
 $copyLink = $viewModel->getCopyLink();
+$copyLabel = __('Copy to clipboard');
 ?>
 <div class="cs-dashboard__wishlist-guest">
-    <span class="cs-dashboard__wishlist-guest-label"><?=__('To recreate this wishlist in other browsers please use following link')?>:</span>
+    <span class="cs-dashboard__wishlist-guest-label"><?=/* @noEscape */ __('To recreate this wishlist in other browsers please use following link')?>:</span>
     <code class="cs-dashboard__wishlist-guest-code">
-        <?=$copyLink?>
+        <?=/* @noEscape */ $copyLink?>
     </code>
-    <a href="#" title="<?= __('Copy to clipboard'); ?>" role="button" aria-label="<?= __('Copy to clipboard'); ?>" class="cs-dashboard__wishlist-guest-copy">
-        <?= $this->getLayout()
-                    ->createBlock('MageSuite\ThemeHelpers\Block\Icon')
+    <a href="#" title="<?= /* @noEscape */ $copyLabel ?>" role="button" aria-label="<?=/* @noEscape */ $copyLabel ?>" class="cs-dashboard__wishlist-guest-copy">
+        <?= $block->getLayout()
+                    ->createBlock(\MageSuite\ThemeHelpers\Block\Icon::class)
                     ->setIconUrl('images/icons/copy.svg')
                     ->setCssClass('cs-dashboard__wishlist-guest-copy-icon')
-                    ->setAltText(__('Copy to clipboard'))
+                    ->setAltText($copyLabel)
                     ->setInlined(true)
                     ->setLazyLoaded(true)
                     ->toHtml();
         ?>
-        <span class="cs-visually-hidden"><?= __('Copy to clipboard'); ?></span>
-        <input type="text" class="cs-visually-hidden copytoclipboard"  aria-label="<?= __('Copy to clipboard'); ?>" value="<?=$copyLink?>">
+        <span class="cs-visually-hidden"><?= /* @noEscape */ $copyLabel ?></span>
+        <input type="text" class="cs-visually-hidden copytoclipboard"  aria-label="<?=/* @noEscape */  $copyLabel ?>" value="<?=/* @noEscape */ $copyLink?>">
     </a>
 </div>
 

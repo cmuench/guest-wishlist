@@ -6,6 +6,7 @@ class Configuration
 {
     const GUEST_WISHLIST_COOKIE_LIFETIME_XML_PATH = 'guest_wishlist/general/cookie_lifetime';
     const GUEST_WISHLIST_SHOW_ACCOUNT_LINKS_FOR_GUEST_XML_PATH = 'guest_wishlist/general/show_account_links_for_guest';
+    const GUEST_WISHLIST_EMPTY_WISHLISTS_RETENTION_PERIOD = 'guest_wishlist/general/empty_wishlists_retention_period';
 
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
@@ -27,10 +28,16 @@ class Configuration
         return $this->scopeConfig->getValue(self::GUEST_WISHLIST_SHOW_ACCOUNT_LINKS_FOR_GUEST_XML_PATH);
     }
 
-    public function getUseQtyInWishlist() {
+    public function getUseQtyInWishlist()
+    {
         return $this->scopeConfig->getValue(
             \Magento\Wishlist\Helper\Data::XML_PATH_WISHLIST_LINK_USE_QTY,
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
+    }
+
+    public function getEmptyWishlistsRetentionPeriod()
+    {
+        return (int)$this->scopeConfig->getValue(self::GUEST_WISHLIST_EMPTY_WISHLISTS_RETENTION_PERIOD);
     }
 }

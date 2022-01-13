@@ -4,7 +4,7 @@ namespace MageSuite\GuestWishlist\Block\Customer\Wishlist\Guest;
 
 class CopyWishlistLink extends \Magento\Framework\View\Element\Template
 {
-    protected $_template = 'MageSuite_GuestWishlist::copy_wishlist_link.phtml';
+    protected $_template = 'MageSuite_GuestWishlist::copy_wishlist_link.phtml'; // phpcs:ignore
 
     public function _toHtml()
     {

@@ -33,8 +33,7 @@ class CountItemsForGuestWishlist
         \Magento\Wishlist\Model\WishlistFactory $wishlistFactory,
         \MageSuite\GuestWishlist\Service\CookieBasedWishlistProvider $cookieBasedWishlistProvider,
         \MageSuite\GuestWishlist\Helper\Configuration $configuration
-    )
-    {
+    ) {
         $this->customerSession = $customerSession;
         $this->wishlistFactory = $wishlistFactory;
         $this->cookieBasedWishlistProvider = $cookieBasedWishlistProvider;
